@@ -41,8 +41,8 @@ class Ticket extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('dept_id, topic_id, user_id, user_email, subject, status, create_time, update_time', 'required'),
-			array('dept_id, topic_id, user_id, status', 'numerical', 'integerOnly'=>true),
+			array('dept_id, topic_id, user_id, user_email, subject, status, create_time, update_time, lastreply_time', 'required'),
+			array('dept_id, topic_id, user_id', 'numerical', 'integerOnly'=>true),
 			array('user_email', 'length', 'max'=>30),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.

@@ -7,7 +7,7 @@
 return array(
     'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
     //Site name
-    'name' => 'My Web Application',
+    'name' => 'EasyTicket',
     //默认控制器
     'defaultController' => 'ticket/index',
     // preloading 'log' component

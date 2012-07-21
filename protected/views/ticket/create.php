@@ -10,6 +10,19 @@ $this->menu=array(
 );
 ?>
 
+
+<?php if(Yii::app()->user->hasFlash('contact')): ?>
+
+<h1>Thank you</h1>
+
+<div class="flash-success">
+	<?php echo Yii::app()->user->getFlash('contact'); ?>
+</div>
+
+<?php else: ?>
+
 <h1>Create Ticket</h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+
+<?php endif; ?>

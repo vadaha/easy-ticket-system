@@ -74,17 +74,21 @@ class TicketMessageController extends Controller {
         ));
     }
 
-    //Guest Reply
+    //客服回复
     public function actionReply() {
         $model = new TicketMessage;
-        if (isset($_POST['TicketMessage'])) {
+        if (isset($_POST['TicketMessage'])) {           
             $model->attributes = $_POST['TicketMessage'];
+            
             if ($model->save()) {
                 //更新T状态is_answered:1
                 $t = Ticket::model()->findByPk($model->ticket_id);
                 $t->is_answered = 1;
+                $t->status = 'Staff-Reply';
+                $t->lastreply_time = date('Y-m-d H:i:s');
                 $t->save();
                 
+                Yii::app()->user->setFlash('view-ticket', 'Your notes has been posted successfully.');
                 $this->redirect(array('ticket/view', 'id' => $model->ticket_id));
             }                
         }
