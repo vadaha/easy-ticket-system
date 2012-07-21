@@ -9,8 +9,9 @@ $this->menu=array(
 );
 ?>
 
-<h1>Tickets</h1>
+<h1>Welome to EasyTickets System</h1>
 
+<!--
 <table>
     <tbody>
         <?php
@@ -21,4 +22,15 @@ $this->menu=array(
         ?>
     </tbody>
 </table>
+-->
 
+<div>
+    In order to streamline support requests and better serve you, we utilize a support ticket system.
+    Every support request is assigned a unique ticket number which you can use to track the progress and responses online.
+    For your reference we provide complete archives and history of all your support requests. 
+    A valid email address is required.
+</div>
+
+<p><form action="<?= Yii::app()->createUrl('ticket/create') ?>" method="POST">
+    <input type="submit" value="Open New Ticket" />
+</form></p>
