@@ -25,7 +25,7 @@ class TicketController extends Controller {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('index', 'view'),
+                'actions' => array('index', 'view', 'create', 'close'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -72,7 +72,7 @@ class TicketController extends Controller {
                 $ticket->dept_id = 0;
                 $ticket->topic_id = rand(1,2);
                 $ticket->user_id = 0;
-                $ticket->status = 0;
+                $ticket->status = 'open';
                 $ticket->save();
                 //print_r($ticket->errors);exit;
                 //开票操作二
@@ -85,7 +85,9 @@ class TicketController extends Controller {
                 $message->ip_address = '127.0.0.1';
                 $message->save();               
                 //页面跳转
-                $this->redirect('view', array('id'=>$ticket->ticket_id));
+                Yii::app()->user->setFlash('contact','Thank you for contacting us. We will respond to you as soon as possible.');
+		$this->refresh();
+               
             }
         }
 
@@ -135,6 +137,18 @@ class TicketController extends Controller {
         else
             throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');
     }
+    
+    /**
+     * 客户关闭服务票 
+     */
+    public function actionClose($id) {
+        $t = Ticket::model()->findByPk($id);
+        $t->status = 'Closed';
+        if($t->save())
+            Yii::app()->user->setFlash('view-ticket','This ticket has been closed,please open new ticket if need.');
+            $this->redirect(array('view', 'id'=>$id) );
+    }
+    
 
     /**
      * Lists all models.

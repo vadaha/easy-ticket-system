@@ -42,7 +42,7 @@ class Ticket extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('dept_id, topic_id, user_id, user_email, status, create_time, update_time', 'required'),
-			array('dept_id, topic_id, user_id, status', 'numerical', 'integerOnly'=>true),
+			array('dept_id, topic_id, user_id', 'numerical', 'integerOnly'=>true),
 			array('user_email', 'length', 'max'=>30),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -58,7 +58,8 @@ class Ticket extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-                    'message'=>array(self::HAS_MANY, 'TicketMessage', 'ticket_id')
+                    'message'=>array(self::HAS_MANY, 'TicketMessage', 'ticket_id'),
+                    'help_topic'=>array(self::HAS_MANY, 'HelpTopic', 'topic_id')
 		);
 	}
 

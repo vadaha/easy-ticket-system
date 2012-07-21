@@ -15,21 +15,23 @@ $this->menu=array(
 
 <h1>View Ticket #<?php echo $model->ticket_id; ?></h1>
 
+<?php if(Yii::app()->user->hasFlash('view-ticket')): ?>
+<div class="flash-success"><?= Yii::app()->user->getFlash('view-ticket') ?></div>
+<?php endif; ?>
+
 <?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
+	'data'=>$model,       
 	'attributes'=>array(
-		'ticket_id',
-		'dept_id',
+                'subject',		
+		//'dept_id',
 		'topic_id',
-		'user_id',
-		'user_email',
-		'status',
-                'is_answered',
+                'status',
+		//'user_id',
+		'user_email',                
 		'create_time',
-		'update_time',
+		'lastreply_time',
 	),
 )); ?>
-
 
 <?php
 //消息列表
@@ -54,13 +56,14 @@ $this->widget('zii.widgets.CListView', array(
 ?>
 
 <!-- 消息回复 -->
+<?php if(strtolower($model->status) != 'closed'): ?>
 <p>Add Comments</p>
 <form action="<?= Yii::app()->createUrl('TicketMessage/reply') ?>" method="post">
     <input type="hidden" name="TicketMessage[ticket_id]" value="<?= $model->ticket_id ?>" />
-    <input type="hidden" name="TicketMessage[staff_id]" value="22" />
-    <input type="hidden" name="TicketMessage[ip_address]" value="0" />
-    <input type="hidden" name="TicketMessage[create_time]" value="<?= date('Y-m-d H:i:s') ?>" />
-    <input type="hidden" name="TicketMessage[update_time]" value="<?= date('Y-m-d H:i:s') ?>" />
-    <textarea name="TicketMessage[msg_content]"></textarea>
-    <input type="submit" value="Post" />
+    <input type="hidden" name="TicketMessage[ip_address]" value="0" />   
+    <textarea style="width: 685px;height:150px;padding: 10px;" name="TicketMessage[msg_content]"></textarea>
+    
+    <input type="submit" value="Post" />              
+    <?=  CHtml::link('<input type="button" value="Close">', Yii::app()->createUrl('ticket/close', array('id'=>$model->ticket_id))) ?>
 </form>
+<?php endif; ?>

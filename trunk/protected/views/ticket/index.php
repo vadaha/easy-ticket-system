@@ -3,10 +3,10 @@ $this->breadcrumbs=array(
 	'Tickets',
 );
 
-$this->menu=array(
-	array('label'=>'Create Ticket', 'url'=>array('create')),
-	array('label'=>'Manage Ticket', 'url'=>array('admin')),
-);
+//$this->menu=array(
+//	array('label'=>'Create Ticket', 'url'=>array('create')),
+//	array('label'=>'Manage Ticket', 'url'=>array('admin')),
+//);
 ?>
 
 <h1>Welome to EasyTickets System</h1>
