@@ -5,7 +5,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Ticket', 'url'=>array('index')),
+	array('label'=>'List Ticket', 'url'=>array('list')),
 	array('label'=>'Manage Ticket', 'url'=>array('admin')),
 );
 ?>

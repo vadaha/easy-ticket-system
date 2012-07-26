@@ -25,7 +25,7 @@ class TicketController extends Controller {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('index', 'view', 'create', 'close'),
+                'actions' => array('index', 'view', 'create', 'close', 'list'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -144,6 +144,7 @@ class TicketController extends Controller {
     public function actionClose($id) {
         $t = Ticket::model()->findByPk($id);
         $t->status = 'Closed';
+        $t->is_answered = 0;
         if($t->save())
             Yii::app()->user->setFlash('view-ticket','This ticket has been closed,please open new ticket if need.');
             $this->redirect(array('view', 'id'=>$id) );
@@ -158,6 +159,18 @@ class TicketController extends Controller {
         $this->render('index', array(
             'dataProvider' => $dataProvider,
         ));
+    }
+    
+    public function actionList() {
+        $dataProvider = new CActiveDataProvider('Ticket', array(
+            'criteria'=>array(
+                'condition' => 'status != "Closed"',
+                'order' => 'is_answered DESC, create_time DESC'
+            ),
+            'sort'=>false
+        ));
+        $model = new Ticket;
+        $this->render('list', array('model'=>$model, 'dataProvider'=>$dataProvider));
     }
 
     /**
