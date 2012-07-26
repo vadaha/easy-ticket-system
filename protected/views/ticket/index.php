@@ -31,6 +31,10 @@ $this->breadcrumbs=array(
     A valid email address is required.
 </div>
 
-<p><form action="<?= Yii::app()->createUrl('ticket/create') ?>" method="POST">
+<form action="<?= Yii::app()->createUrl('ticket/create') ?>" method="POST">
     <input type="submit" value="Open New Ticket" />
-</form></p>
+</form>
+
+<form action="<?= Yii::app()->createUrl('ticket/list') ?>" method="POST">
+    <input type="submit" value="My Tickets" />
+</form>

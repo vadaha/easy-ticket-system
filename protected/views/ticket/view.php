@@ -5,7 +5,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Ticket', 'url'=>array('index')),
+	array('label'=>'List Ticket', 'url'=>array('list')),
 	array('label'=>'Create Ticket', 'url'=>array('create')),
 	array('label'=>'Update Ticket', 'url'=>array('update', 'id'=>$model->ticket_id)),
 	array('label'=>'Delete Ticket', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->ticket_id),'confirm'=>'Are you sure you want to delete this item?')),
@@ -50,7 +50,7 @@ $this->widget('zii.widgets.CListView', array(
     'dataProvider'=>$dataProvider,
     'itemView'=>'_message_list',   // refers to the partial view named '_post'
     'sortableAttributes'=>array(
-        'msg_content',        
+        //'msg_content',        
     ),
 ));
 ?>
