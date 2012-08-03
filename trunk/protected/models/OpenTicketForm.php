@@ -10,17 +10,22 @@ class OpenTicketForm extends CFormModel {
     public $user_email;
     public $msg_content;
     public $isNewRecord;
+    public $help_topic;
     
     public function rules() {
        return array(
-           array('user_name,subject, user_email, msg_content', 'required'),
+           array('user_name,subject, help_topic,user_email, msg_content', 'required'),
            array('user_email', 'email')
        );
     }
     
     public function attributeLabels() {
         return array(
-            'user_name' => 'Full Name',
+            'user_name' => '姓名',
+            'help_topic' => '主题',
+            'user_email' => '邮箱',
+            'subject' => '描述',
+            'msg_content' => '内容'
         );
     }
        

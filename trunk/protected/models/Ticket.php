@@ -69,14 +69,16 @@ class Ticket extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'ticket_id' => 'Ticket',
-			'dept_id' => 'Dept',
-			'topic_id' => 'Topic',
+			'ticket_id' => '服务票',
+			'dept_id' => '部门',
+			'topic_id' => '分类',
+			'subject' => '主题',
 			'user_id' => 'Guest',
-			'user_email' => 'Gust Email',
-			'status' => 'Status',
-			'create_time' => 'Create Time',
-			'update_time' => 'Update Time',
+			'user_email' => '邮箱',
+			'status' => '状态',
+			'create_time' => '创建时间',
+			'update_time' => '更新时间',
+			'lastreply_time' => '最后回复时间'
 		);
 	}
 

@@ -25,11 +25,11 @@ class TicketController extends Controller {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('index', 'view', 'create', 'close', 'list'),
+                'actions' => array('index', 'view', 'close', 'list'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update'),
+                'actions' => array('create', 'update', 'create'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -61,19 +61,22 @@ class TicketController extends Controller {
         // $this->performAjaxValidation($model);
 
         if (isset($_POST['OpenTicketForm'])) {
-            $model->attributes = $_POST['OpenTicketForm'];
+            $model->attributes = $_POST['OpenTicketForm'];            
             if ($model->validate()) {
                 //开票操作一
                 $ticket = new Ticket;
                 $ticket->user_email = $model->user_email;
+                $ticket->user_name = $model->user_name;
                 $ticket->subject = $model->subject;
                 $ticket->create_time = date('Y-m-d H:i:s');
                 $ticket->update_time = date('Y-m-d H:i:s');
                 $ticket->dept_id = 0;
-                $ticket->topic_id = rand(1,2);
-                $ticket->user_id = 0;
+                $ticket->topic_id = $model->help_topic;
+                $ticket->user_id = Yii::app()->user->getState('user_id');
                 $ticket->status = 'open';
-                $ticket->save();
+                if(!$ticket->save()) {
+                    var_dump($ticket->errors);die();
+                }
                 //print_r($ticket->errors);exit;
                 //开票操作二
                 $message = new TicketMessage;
@@ -86,7 +89,7 @@ class TicketController extends Controller {
                 $message->save();               
                 //页面跳转
                 Yii::app()->user->setFlash('contact','Thank you for contacting us. We will respond to you as soon as possible.');
-		$this->refresh();
+		        $this->refresh();
                
             }
         }
@@ -156,6 +159,7 @@ class TicketController extends Controller {
      */
     public function actionIndex() {
         $dataProvider = new CActiveDataProvider('Ticket');
+        
         $this->render('index', array(
             'dataProvider' => $dataProvider,
         ));
@@ -164,7 +168,8 @@ class TicketController extends Controller {
     public function actionList() {
         $dataProvider = new CActiveDataProvider('Ticket', array(
             'criteria'=>array(
-                'condition' => 'status != "Closed"',
+                'condition' => 'user_id=:user_id',
+                'params'=>array('user_id'=>Yii::app()->user->getState('user_id')),
                 'order' => 'is_answered DESC, create_time DESC'
             ),
             'sort'=>false
