@@ -1,12 +1,12 @@
 <?php
 $this->breadcrumbs=array(
-	'Tickets'=>array('index'),
-	'Create',
+	'服务票'=>array('index'),
+	'开票',
 );
 
 $this->menu=array(
-	array('label'=>'List Ticket', 'url'=>array('list')),
-	array('label'=>'Manage Ticket', 'url'=>array('admin')),
+	array('label'=>'服务票列表', 'url'=>array('list')),
+	//array('label'=>'Manage Ticket', 'url'=>array('admin')),
 );
 ?>
 
@@ -21,7 +21,7 @@ $this->menu=array(
 
 <?php else: ?>
 
-<h1>Create Ticket</h1>
+<h1>新开服务票</h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
 

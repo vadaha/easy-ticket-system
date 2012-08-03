@@ -67,10 +67,10 @@ class TicketMessage extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'msg_id' => 'Msg',
+			'msg_id' => '消息',
 			'ticket_id' => 'Ticket',
 			'staff_id' => 'Staff',
-			'msg_content' => 'Msg Content',
+			'msg_content' => '内容',
 			'ip_address' => 'Ip Address',
 			'create_time' => 'Create Time',
 			'update_time' => 'Update Time',

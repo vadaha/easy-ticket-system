@@ -10,19 +10,22 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+$this->breadcrumbs=array(
+	'服务票',	
+);
 
 $this->menu=array(
-	array('label'=>'List Ticket', 'url'=>array('list')),
-	array('label'=>'Create Ticket', 'url'=>array('create')),
-	array('label'=>'Update Ticket', 'url'=>array('update', 'id'=>$model->ticket_id)),
-	array('label'=>'Delete Ticket', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->ticket_id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Ticket', 'url'=>array('admin')),
+	array('label'=>'列表', 'url'=>array('list')),
+	array('label'=>'新建问题', 'url'=>array('create')),
+	//array('label'=>'Update Ticket', 'url'=>array('update', 'id'=>$model->ticket_id)),
+	array('label'=>'删除', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->ticket_id),'confirm'=>'Are you sure you want to delete this item?')),
+	//array('label'=>'Manage Ticket', 'url'=>array('admin')),
 );
 
 $this->widget('zii.widgets.grid.CGridView',array(
     'dataProvider'=>$dataProvider,
     'columns'=>array(
-        'ticket_id',
+        //'ticket_id',
         array(
             'header'=>'主题',
             'name'=>'subject',
@@ -35,8 +38,7 @@ $this->widget('zii.widgets.grid.CGridView',array(
             'header'=>'最后回复时间',
             'name'=>'lastreply_time',
             'value'=>'strtotime($data->lastreply_time) == "" ? "":$data->lastreply_time',            
-        ),
-        'is_answered'
+        )        
     ),
     
 ));
