@@ -1,7 +1,7 @@
 <?php
 $this->breadcrumbs=array(
-	'Tickets'=>array('index'),
-	$model->ticket_id,
+	'我的易票'=>array('list'),
+	'详情'.$model->ticket_id,
 );
 
 $this->menu=array(

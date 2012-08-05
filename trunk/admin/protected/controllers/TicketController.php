@@ -131,7 +131,8 @@ class TicketController extends Controller
 	{
 		$dataProvider=new CActiveDataProvider('Ticket',array(
                    'criteria'=>array(                       
-                        'with'=>array('help_topic'),                       
+                        'with'=>array('help_topic'),
+                        'order'=>'ticket_id DESC'
                     ),
 
                 ));

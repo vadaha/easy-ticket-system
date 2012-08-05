@@ -11,12 +11,12 @@
  * and open the template in the editor.
  */
 $this->breadcrumbs=array(
-	'服务票',	
+	Yii::t('common','我的易票'),
 );
 
 $this->menu=array(
-	array('label'=>'列表', 'url'=>array('list')),
-	array('label'=>'新建问题', 'url'=>array('create')),
+	//array('label'=>Yii::t('common','服务票列表'), 'url'=>array('list')),
+	array('label'=>'新开易票', 'url'=>array('create')),
 	//array('label'=>'Update Ticket', 'url'=>array('update', 'id'=>$model->ticket_id)),
 	array('label'=>'删除', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->ticket_id),'confirm'=>'Are you sure you want to delete this item?')),
 	//array('label'=>'Manage Ticket', 'url'=>array('admin')),
