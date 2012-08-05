@@ -41,7 +41,7 @@
 </div>
 */ ?>
 
-<tr>
+<tr class="even">
     <td><?= CHtml::link($data->ticket_id, array('view','id'=>$data->ticket_id), array('target'=>'_blank')); ?></td>
     <td><?= $data->help_topic->topic ?></td>
     <td><?= $data->subject ?></td>   

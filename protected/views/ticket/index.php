@@ -1,6 +1,6 @@
 <?php
 $this->breadcrumbs=array(
-	'Tickets',
+	Yii::t('common', '欢迎使用易票客服系统'),
 );
 
 //$this->menu=array(
@@ -25,16 +25,16 @@ $this->breadcrumbs=array(
 -->
 
 <div>
+    为了更好的服务广大客户，我们开发了这套系统。
     In order to streamline support requests and better serve you, we utilize a support ticket system.
     Every support request is assigned a unique ticket number which you can use to track the progress and responses online.
     For your reference we provide complete archives and history of all your support requests. 
     A valid email address is required.
 </div>
 
-<form action="<?= Yii::app()->createUrl('ticket/create') ?>" method="POST">
-    <input type="submit" value="Open New Ticket" />
-</form>
+<br />
 
-<form action="<?= Yii::app()->createUrl('ticket/list') ?>" method="POST">
-    <input type="submit" value="My Tickets" />
-</form>
+<div>
+    <a href="<?= Yii::app()->createUrl('ticket/list') ?>">我的易票<?= $msg_info ?></a>
+    <a href="<?= Yii::app()->createUrl('ticket/create') ?>">新开易票</a>
+</div>

@@ -159,9 +159,28 @@ class TicketController extends Controller {
      */
     public function actionIndex() {
         $dataProvider = new CActiveDataProvider('Ticket');
+        $mst_info = '';
+        if(!Yii::app()->user->isGuest) {
+            $cnt_unread = Yii::app()->db->createCommand()
+                ->select('COUNT(*) AS cnt')
+                ->from('ticket')
+                ->where('user_id=:user_id AND is_answered=1 AND status!=:closed', array(
+                    'user_id'=>Yii::app()->user->getState('user_id'),
+                    'closed'=>'Closed'))
+                ->queryRow();
+                
+             $cnt_all = Yii::app()->db->createCommand()
+                ->select('COUNT(*) AS cnt')
+                ->from('ticket')
+                ->where('user_id=:user_id', array('user_id'=>Yii::app()->user->getState('user_id')))
+                ->queryRow();
+                
+             $mst_info = '('. $cnt_unread['cnt'] . '/' . $cnt_all['cnt'] .')';
+        }
         
         $this->render('index', array(
             'dataProvider' => $dataProvider,
+            'msg_info' => $mst_info
         ));
     }
     
