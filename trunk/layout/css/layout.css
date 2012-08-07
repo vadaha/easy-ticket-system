@@ -1,5 +1,10 @@
 body {
-    margin:0;padding:0;
+    background: url("../img/common/bg.png") no-repeat scroll center 40px #E0F4FF;
+    color: #333333;
+    font-family: Tahoma,Verdana,sans-serif,simsun;
+    font-size: 12px;
+    margin:0;
+    padding:0;
 }
 
 .header-bar {
@@ -45,16 +50,14 @@ body {
     width:660px;
     float:left;
     position:relative;
-    padding-top:30px;
-    background-color:#fff;
+    padding-top:30px;    
     height:320px;
 }
 
 .login {
     float:left;    
     width:290px;
-    height:350px;
-    background-color:#fff;
+    height:350px;  
 }
 
 .main-cat {
