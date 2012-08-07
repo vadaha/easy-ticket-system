@@ -52,12 +52,14 @@ body {
     position:relative;
     padding-top:30px;    
     height:320px;
+    background:#E0F4FF;
 }
 
 .login {
     float:left;    
     width:290px;
-    height:350px;  
+    height:350px;
+    background:#E0F4FF;
 }
 
 .main-cat {
