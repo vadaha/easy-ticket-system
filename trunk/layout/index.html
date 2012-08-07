@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Language" content="zh-cn" />
+<link rel="stylesheet" type="text/css" href="css/layout.css" />
+<link rel="stylesheet" type="text/css" href="css/global.css" />
+<link rel="stylesheet" type="text/css" href="css/menu.css" />
+<script src="js/jquery-1.4.4.min.js"></script>
+<script src="js/slides.min.jquery.js"></script>
+<script>
+		$(function(){
+			$('#slides').slides({
+				preload: true,
+				preloadImage: 'img/loading.gif',
+				play: 5000,
+				pause: 2500,
+				hoverPause: true
+			});
+		});
+	</script>
+<script language="javascript">
+	function qiehuan(num){
+		for(var id = 0;id<=8;id++)
+		{
+			if(id==num)
+			{
+				document.getElementById("qh_con"+id).style.display="block";
+				document.getElementById("mynav"+id).className="nav_on";
+			}
+			else
+			{
+				document.getElementById("qh_con"+id).style.display="none";
+				document.getElementById("mynav"+id).className="";
+			}
+		}
+	}
+</script>
+<title>Layout</title>
+</head>
+<body>
+<!--<div class="header-bar"></div>-->
+<div id="global-box">
+    <div id="header">
+        <div class="logo"><img src="http://img03.taobaocdn.com/tps/i3/T1ogqgXfXeXXXXXXXX-168-42.png" /> </div>
+        <div class="search"></div>       
+    </div><!--header-->
+    
+    <div class="nav">        
+    <div id=menu_out>
+  <div id=menu_in>
+    <div id=menu>
+      <UL id=nav>
+        <LI><A class=nav_on id=mynav0 onmouseover=javascript:qiehuan(0) href="#"><SPAN>首 页</SPAN></A></LI>
+        <LI class="menu_line"></LI>
+        <li><a href="#" onmouseover="javascript:qiehuan(1)" id="mynav1" class="nav_off"><span>菜单</span></a></li>        
+      </UL>
+      <div id=menu_con>
+        <div id=qh_con0 style="DISPLAY: block">
+          <UL>
+            <LI>好消息：天语大黄蜂W806，安卓系统v4.0即将发布，敬请期待！</LI>
+          </UL>
+        </div>
+        <div id=qh_con1 style="DISPLAY: none">
+          <UL>
+            <LI><a href="#"><span>栏目名称4</span></A></LI>
+            <LI class=menu_line2></LI>
+            <LI><A href="#"><SPAN>栏目名称5</SPAN></A></LI>
+            <LI class=menu_line2></LI>
+            <LI><A href="#"><SPAN>栏目名称6</SPAN></A></LI>
+          </UL>
+        </div>
+        <div id=qh_con2 style="DISPLAY: none">
+          <UL>
+            <LI><a href="#"><span>栏目名称7</span></A></LI>
+            <LI class=menu_line2></LI>
+            <LI><A href="#"><SPAN>栏目名称8</SPAN></A></LI>
+            <LI class=menu_line2></LI>
+            <LI><A href="#"><SPAN>栏目名称9</SPAN></A></LI>
+          </UL>
+        </div>        
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+    
+    </div><!--menu-->
+    
+    <div class="layout">
+        <div class="banner">        
+        <img src="img/new-ribbon.png" width="112" height="112" alt="New Ribbon" id="ribbon">
+            <div id="slides">
+				<div class="slides_container">
+					<a href="" title="" target="_blank"><img src="img/slide-1.jpg" width="570" height="270" alt="Slide 1"></a>
+					<a href="" title="" target="_blank"><img src="img/slide-2.jpg" width="570" height="270" alt="Slide 2"></a>
+					<a href="" title="" target="_blank"><img src="img/slide-3.jpg" width="570" height="270" alt="Slide 3"></a>
+					<a href="" title="" target="_blank"><img src="img/slide-4.jpg" width="570" height="270" alt="Slide 4"></a>
+					<a href="" title="" target="_blank"><img src="img/slide-5.jpg" width="570" height="270" alt="Slide 5"></a>
+					<a href="" title="" target="_blank"><img src="img/slide-6.jpg" width="570" height="270" alt="Slide 6"></a>
+					<a href="" title="" target="_blank"><img src="img/slide-7.jpg" width="570" height="270" alt="Slide 7"></a>
+				</div>
+				<!--<a href="#" class="prev"><img src="img/arrow-prev.png" width="24" height="43" alt="Arrow Prev"></a>
+				<a href="#" class="next"><img src="img/arrow-next.png" width="24" height="43" alt="Arrow Next"></a>-->
+			</div>
+			<img src="img/example-frame.png" width="600" height="341" alt="Example Frame" id="frame">
+        
+        
+        </div><!--banner-->
+        <div class="login">
+            
+        </div>
+    </div>
+    
+    <!--
+    <div class="layout" id="layout-sec">
+        <div class="main-cat">
+            <div class="tag"></div>            
+        </div>
+        <div class="column-right"></div>
+    </div>
+    -->
+     
+    
+    <div id="footer">
+        <hr style="border:2px solid #ddd;">        
+        <p>淘宝网 版权所有 2012</p>
+        <p>Email:me@hihans.com</p>
+        <p>上海市嘉定区张掖路333号 瑞尔大厦701</p>
+        <p>Copyright &copy; wdtxl.com All rights reserved.</p>
+    </div><!--footer-->    
+</div><!--global-box-->
+</body>
+</html>
