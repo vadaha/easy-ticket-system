@@ -61,7 +61,7 @@ CREATE TABLE `ticket` (
   `update_time` datetime NOT NULL,
   `lastreply_time` datetime NOT NULL,
   PRIMARY KEY  (`ticket_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -70,7 +70,7 @@ SET character_set_client = @saved_cs_client;
 
 LOCK TABLES `ticket` WRITE;
 /*!40000 ALTER TABLE `ticket` DISABLE KEYS */;
-INSERT INTO `ticket` VALUES (1,0,1,'充值问题咨询',50,'Hans He','hans.he@cifang.hk','open',0,'2012-08-03 16:34:10','2012-08-03 16:34:10','0000-00-00 00:00:00'),(2,0,1,'我的第二个问题',50,'Hans He','hans.he@cifang.hk','open',0,'2012-08-03 17:40:09','2012-08-03 17:40:09','0000-00-00 00:00:00'),(3,0,2,'哈哈，您有问题',100,'He Jialiang','me@hihans.com','Customer-Reply',0,'2012-08-03 17:43:12','2012-08-03 17:43:12','2012-08-03 17:44:04'),(4,0,2,'NFS服务器',100,'He Jialiang','me@hihans.com','Customer-Reply',0,'2012-08-03 17:46:26','2012-08-03 17:46:26','2012-08-03 17:46:50');
+INSERT INTO `ticket` VALUES (1,0,1,'充值问题咨询',50,'Hans He','hans.he@cifang.hk','open',0,'2012-08-03 16:34:10','2012-08-03 16:34:10','0000-00-00 00:00:00'),(2,0,1,'我的第二个问题',50,'Hans He','hans.he@cifang.hk','Customer-Reply',0,'2012-08-03 17:40:09','2012-08-03 17:40:09','0000-00-00 00:00:00'),(3,0,2,'哈哈，您有问题',100,'He Jialiang','me@hihans.com','Customer-Reply',0,'2012-08-03 17:43:12','2012-08-03 17:43:12','2012-08-03 17:44:04'),(4,0,2,'NFS服务器',100,'He Jialiang','me@hihans.com','Customer-Reply',0,'2012-08-03 17:46:26','2012-08-03 17:46:26','2012-08-03 17:46:50'),(5,0,1,'Test again',50,'Hans He','hans.he@cifang.hk','open',0,'2012-08-11 06:15:35','2012-08-11 06:15:35','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `ticket` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -90,7 +90,7 @@ CREATE TABLE `ticket_message` (
   `create_time` datetime NOT NULL,
   `update_time` datetime NOT NULL,
   PRIMARY KEY  (`msg_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -99,7 +99,7 @@ SET character_set_client = @saved_cs_client;
 
 LOCK TABLES `ticket_message` WRITE;
 /*!40000 ALTER TABLE `ticket_message` DISABLE KEYS */;
-INSERT INTO `ticket_message` VALUES (1,1,0,'我昨天充值了100，但是没有收到。','127.0.0.1','2012-08-03 16:34:10','2012-08-03 16:34:10'),(2,2,0,'我的第二个问题。','127.0.0.1','2012-08-03 17:40:09','2012-08-03 17:40:09'),(3,3,0,'哈哈哈哈。哈哈哈哈\r\n您有额太难听','127.0.0.1','2012-08-03 17:43:12','2012-08-03 17:43:12'),(4,3,22,'给你回复了哦，哈哈','0','2012-08-03 17:43:53','2012-08-03 17:43:53'),(5,4,0,'在上海吗？是的呢','127.0.0.1','2012-08-03 17:46:26','2012-08-03 17:46:26'),(6,4,22,'Yes ,YOucan\r\n','0','2012-08-03 17:46:41','2012-08-03 17:46:41'),(7,3,0,'知道了啊。\r\n','0','2012-08-03 17:47:37','2012-08-03 17:47:37'),(8,4,0,'好的，谢谢你拉。','0','2012-08-03 17:47:53','2012-08-03 17:47:53');
+INSERT INTO `ticket_message` VALUES (1,1,0,'我昨天充值了100，但是没有收到。','127.0.0.1','2012-08-03 16:34:10','2012-08-03 16:34:10'),(2,2,0,'我的第二个问题。','127.0.0.1','2012-08-03 17:40:09','2012-08-03 17:40:09'),(3,3,0,'哈哈哈哈。哈哈哈哈\r\n您有额太难听','127.0.0.1','2012-08-03 17:43:12','2012-08-03 17:43:12'),(4,3,22,'给你回复了哦，哈哈','0','2012-08-03 17:43:53','2012-08-03 17:43:53'),(5,4,0,'在上海吗？是的呢','127.0.0.1','2012-08-03 17:46:26','2012-08-03 17:46:26'),(6,4,22,'Yes ,YOucan\r\n','0','2012-08-03 17:46:41','2012-08-03 17:46:41'),(7,3,0,'知道了啊。\r\n','0','2012-08-03 17:47:37','2012-08-03 17:47:37'),(8,4,0,'好的，谢谢你拉。','0','2012-08-03 17:47:53','2012-08-03 17:47:53'),(9,2,0,'This is a test.','0','2012-08-11 05:26:38','2012-08-11 05:26:38'),(10,5,0,'Hello','127.0.0.1','2012-08-11 06:15:35','2012-08-11 06:15:35'),(11,2,0,'这是个测试航哥\r\n的的他叫撒快乐的风景\r\n上来大家发了j\r\nwelocao','0','2012-08-11 07:19:05','2012-08-11 07:19:05');
 /*!40000 ALTER TABLE `ticket_message` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -139,4 +139,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-08-03 10:23:57
+-- Dump completed on 2012-08-26  6:28:57
