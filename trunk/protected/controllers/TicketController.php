@@ -74,6 +74,7 @@ class TicketController extends Controller {
                 $ticket->topic_id = $model->help_topic;
                 $ticket->user_id = Yii::app()->user->getState('user_id');
                 $ticket->status = 'open';
+                $ticket->is_answered = 0;
                 if(!$ticket->save()) {
                     var_dump($ticket->errors);die();
                 }

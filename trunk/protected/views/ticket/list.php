@@ -16,9 +16,9 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	//array('label'=>Yii::t('common','服务票列表'), 'url'=>array('list')),
-	array('label'=>'新开易票', 'url'=>array('create')),
+	//array('label'=>'新开易票', 'url'=>array('create')),
 	//array('label'=>'Update Ticket', 'url'=>array('update', 'id'=>$model->ticket_id)),
-	array('label'=>'删除', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->ticket_id),'confirm'=>'Are you sure you want to delete this item?')),
+	//array('label'=>'删除', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->ticket_id),'confirm'=>'Are you sure you want to delete this item?')),
 	//array('label'=>'Manage Ticket', 'url'=>array('admin')),
 );
 
@@ -29,7 +29,7 @@ $this->widget('zii.widgets.grid.CGridView',array(
         array(
             'header'=>'主题',
             'name'=>'subject',
-            'value'=>'CHtml::link($data->subject ,array("ticket/view","id"=>$data->ticket_id), array("target"=>"_blank", "class"=>$data->is_answered==1?"t-answered":""))', 
+            'value'=>'CHtml::link($data->subject ,array("ticket/view","id"=>$data->ticket_id), array("class"=>$data->is_answered==1?"t-answered":""))', 
             'type'=>'raw',           
         ),
         array('header'=>'状态', 'name'=>'status'),
@@ -40,6 +40,8 @@ $this->widget('zii.widgets.grid.CGridView',array(
             'value'=>'strtotime($data->lastreply_time) == "" ? "":$data->lastreply_time',            
         )        
     ),
+    
+    'cssFile'=>false
     
 ));
 
