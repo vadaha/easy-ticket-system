@@ -3,56 +3,114 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="language" content="en" />
+	
 
-	<!-- blueprint CSS framework -->
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection" />
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print" />
-	<!--[if lt IE 8]>
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ie.css" media="screen, projection" />
-	<![endif]-->
-
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/banner.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/menu.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/layout.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css" />
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
+	
+	<script src="js/jquery-1.4.4.min.js"></script>
+    <script src="js/slides.min.jquery.js"></script>
+    <script>
+    		$(function(){
+    			$('#slides').slides({
+    				preload: true,
+    				preloadImage: 'img/banner/loading.gif',
+    				play: 5000,
+    				pause: 2500,
+    				hoverPause: true
+    			});
+    		});
+    	</script>
+    <script language="javascript">
+    	function qiehuan(num){
+    		for(var id = 0;id<=8;id++)
+    		{
+    			if(id==num)
+    			{
+    				document.getElementById("qh_con"+id).style.display="block";
+    				document.getElementById("mynav"+id).className="nav_on";
+    			}
+    			else
+    			{
+    				document.getElementById("qh_con"+id).style.display="none";
+    				document.getElementById("mynav"+id).className="";
+    			}
+    		}
+    	}
+    </script>
+	
 </head>
 
 <body>
+<!--<div class="header-bar"></div>-->
+<div id="global-box">
+    <div id="header">
+        <div class="logo"><img src="http://img03.taobaocdn.com/tps/i3/T1ogqgXfXeXXXXXXXX-168-42.png" /> </div>
+        <div class="search"></div>       
+    </div><!--header-->
+    
+    <div class="nav">        
+    <div id=menu_out>
+  <div id=menu_in>
+    <div id=menu>
+      <UL id=nav>
+        <LI><A class=nav_on id=mynav0 onmouseover=javascript:qiehuan(0) href="<?= Yii::app()->createUrl('ticket/index') ?>"><SPAN>首 页</SPAN></A></LI>
+        <LI class="menu_line"></LI>
+        <li><a href="#" onmouseover="javascript:qiehuan(1)" id="mynav1" class="nav_off"><span>菜单</span></a></li>        
+      </UL>
+      <div id=menu_con>
+        <div id=qh_con0 style="DISPLAY: block">
+          <UL>
+            <LI><?= Yii::app()->user->isGuest ? '欢迎您.': '欢迎您'.Yii::app()->user->getState('user_name') ?></LI>
+          </UL>
+        </div>
+        <div id=qh_con1 style="DISPLAY: none">
+          <UL>
+            <LI><a href="#"><span>栏目名称4</span></A></LI>
+            <LI class=menu_line2></LI>
+            <LI><A href="#"><SPAN>栏目名称5</SPAN></A></LI>
+            <LI class=menu_line2></LI>
+            <LI><A href="#"><SPAN>栏目名称6</SPAN></A></LI>
+          </UL>
+        </div>
+        <div id=qh_con2 style="DISPLAY: none">
+          <UL>
+            <LI><a href="#"><span>栏目名称7</span></A></LI>
+            <LI class=menu_line2></LI>
+            <LI><A href="#"><SPAN>栏目名称8</SPAN></A></LI>
+            <LI class=menu_line2></LI>
+            <LI><A href="#"><SPAN>栏目名称9</SPAN></A></LI>
+          </UL>
+        </div>        
+      </div>
+    </div>
+  </div>
+</div>        
+    
+    </div><!--menu-->
+    
+    
+    <div class="pageBody layout">
+    <?php if(isset($this->breadcrumbs)):?>
+        <?php $this->widget('zii.widgets.CBreadcrumbs', array(
+            'links'=>$this->breadcrumbs,
+        )); ?><!-- breadcrumbs -->
+    <?php endif?>
+    
+    <?php echo $content; ?></div>
 
-<div class="container" id="page">
-
-	<div id="header">
-		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
-	</div><!-- header -->
-
-	<div id="mainmenu">
-		<?php $this->widget('zii.widgets.CMenu',array(
-			'items'=>array(
-				array('label'=>'首页', 'url'=>array('/ticket/index')),
-				array('label'=>'关于我们', 'url'=>array('/site/page', 'view'=>'about')),
-				array('label'=>'联系我们', 'url'=>array('/site/contact')),
-				array('label'=>'登录', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'退出 ('.Yii::app()->user->getState('user_name').')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
-			),
-		)); ?>
-	</div><!-- mainmenu -->
-	<?php if(isset($this->breadcrumbs)):?>
-		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
-			'links'=>$this->breadcrumbs,
-		)); ?><!-- breadcrumbs -->
-	<?php endif?>
-
-	<?php echo $content; ?>
-
-	<div class="clear"></div>
-
-	<div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> by Hans.<br/>
-		All Rights Reserved.<br/>
-		<?php //echo Yii::powered(); ?>
-	</div><!-- footer -->
-
-</div><!-- page -->
-
+    
+    <div id="footer">
+               
+        <p>淘宝网 版权所有 2012</p>
+        <p>Email:me@hihans.com</p>
+        <p>上海市嘉定区张掖路333号 瑞尔大厦701</p>
+        <p>Copyright &copy; wdtxl.com All rights reserved.</p>
+    </div><!--footer-->    
+</div><!--global-box-->
 </body>
 </html>
